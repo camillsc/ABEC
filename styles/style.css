@@ -135,24 +135,67 @@ main {
     width: 100%;      
 }
 
-/* === REDES SOCIAIS === */
-.redes-sociais img {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+/* === REDES SOCIAIS (novo) === */
+.redes-sociais{
+  display:flex;
+  gap:14px;               /* espaçamento lateral entre ícones */
+  flex-wrap:wrap;         /* quebra linha no celular */
+  justify-content:center;
 }
+
+.redes-sociais a{
+  width:48px; height:48px;
+  display:grid;           /* centraliza o ícone dentro do círculo */
+  place-items:center;
+
+  border-radius:50%;
+  background: transparent;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.redes-sociais a:hover{
+  background: rgba(255,255,255,.12);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* Tira a margem que empurrava tudo e ajusta o tamanho do ícone */
+.redes-sociais img{
+  width:22px; height:22px;
+  margin:0;
+  display:block;
+}
+
+/* Textos do rodapé */
+.copy p,
+.desenvolvido p{
+  color:#fff;
+  text-align:center;
+  margin:0;
+}
+
+.copy p{ font-weight:700; }
+.desenvolvido p{
+  font-size:12px;
+  opacity:.9;
+  margin-top:4px;
+}
+
+/* Mobile finos */
+@media (max-width:420px){
+  .redes-sociais a{ width:44px; height:44px; }
+  .redes-sociais img{ width:20px; height:20px; }
+}   
 
 /* === RODAPÉ === */
-footer {
-  background-color: #ff1717;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
+footer{
+  background:#ff1717;
+  padding: 36px 16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 12px;              /* espaço entre redes, copy e desenvolvido */
+}   
 
 /* === TEXTOS NO RODAPÉ === */
 .copy p {
@@ -167,3 +210,51 @@ footer {
     font-size: 12px;
 }
 
+/* ===== Responsividade geral ===== */
+img { display:block; max-width:100%; height:auto; }
+
+/* botão hambúrguer: escondido no desktop */
+.menu-toggle{
+  display:none;
+  border:0; background:#ff1717; color:#fff; 
+  width:42px; height:42px; border-radius:10px; 
+  font-size:22px; cursor:pointer;
+}
+
+/* Layout desktop permanece igual; adjust no mobile */
+@media (max-width: 820px){
+  header{ gap:12px; }
+  .logo-img-header h1{ font-size:20px; }
+  nav a{ font-size:18px; }
+
+  /* mostra o hambúrguer */
+  .menu-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* esconde botão "Faça Parte" no topo para ganhar espaço (opcional) */
+  .button-header{ display:none; }
+
+  /* vira menu drop-down */
+  nav{
+    position: fixed; top: 70px; left: 0; right: 0;
+    background:#fff; border-top:1px solid #eee;
+    box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    display: none;   /* fechado por padrão */
+    z-index: 999;
+  }
+  nav.open{ display:block; }
+
+  nav ul{
+    display:flex; flex-direction:column; gap:14px;
+    padding:16px 24px; align-items:center;
+  }
+}
+
+/* Galeria: 2 colunas no mobile, 3/4 já definidos em gallery.css */
+@media (max-width: 420px){
+  .grid{ grid-template-columns: 1fr 1fr; gap:8px; }
+}
+
+/* Carrossel: botões menores no mobile */
+@media (max-width: 480px){
+  .tc__btn{ width:38px; height:38px; font-size:24px; }
+}
