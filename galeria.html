@@ -6,7 +6,7 @@
     <title>A.B.E.C. - Associação Bebedourense de Esportes e Cultura</title>
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/.css">
+    <link rel="stylesheet" href="styles/gallery.css">
 </head>
     <body>
         <header>
@@ -36,8 +36,41 @@
         </header>
         
         <main>
+            <section class="top-carousel" aria-label="Destaques">
+                <button class="tc__btn tc__prev" aria-label="Anterior">‹</button>
+                <div class="tc__viewport">
+                    <ul class="tc__track">
+                    <!-- Substitua pelos destaques que quiser -->
+                    <li class="tc__slide"><img src="resources/gallery/1.JPG" alt="Destaque 1"></li>
+                    <li class="tc__slide"><img src="resources/gallery/2.JPG" alt="Destaque 2"></li>
+                    <li class="tc__slide"><img src="resources/gallery/3.JPG" alt="Destaque 3"></li>
+                    <li class="tc__slide"><img src="resources/gallery/4.JPG" alt="Destaque 4"></li>
+                    <li class="tc__slide"><img src="resources/gallery/5.JPG" alt="Destaque 5"></li>
+                    <li class="tc__slide"><img src="resources/gallery/6.JPG" alt="Destaque 6"></li>
+                    <li class="tc__slide"><img src="resources/gallery/7.JPG" alt="Destaque 7"></li>
+                </ul>
+                </div>
+                <button class="tc__btn tc__next" aria-label="Próximo">›</button>
+                <div class="tc__dots" role="tablist" aria-label="Navegação do carrossel"></div>
+                </section>
 
+                <section class="gallery-section" aria-label="Galeria de fotos">
+                <h2>Galeria</h2>
+                <!-- A grade será preenchida via JS com base na lista de arquivos -->
+                <ul class="grid" id="galleryGrid" aria-live="polite"></ul>
+                </section>
 
+                <!-- Lightbox -->
+                <div class="lightbox" id="lightbox" aria-hidden="true" aria-label="Visualizador de imagem" role="dialog">
+                <div class="lightbox__backdrop"></div>
+                <figure class="lightbox__content">
+                    <button class="lb__close" aria-label="Fechar">✕</button>
+                    <button class="lb__nav lb__prev" aria-label="Anterior">‹</button>
+                    <img id="lbImage" alt="">
+                    <figcaption id="lbCaption"></figcaption>
+                    <button class="lb__nav lb__next" aria-label="Próximo">›</button>
+                </figure>
+                </div>
 
         </main>
 
@@ -64,5 +97,7 @@
                 <p>Desenvolvido por Camille Hernandes Christeli.</p>
             </div>
         </footer>
+
+        <script src="js/gallery.js" defer></script>
     </body>
 </html>
